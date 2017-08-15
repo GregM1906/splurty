@@ -8,28 +8,60 @@
   </head>
   <body>
     <header class="row">
-      <div class="col-3">
-        <div class="circle">
-        <br />
-        You know
-        <br />
-        you need to
-        <br />
-        WH40K
-        </div>
-      </div>
-      
+        <div class="col-3">
+          <%= link_to root_path do %>
+            <%= link_to root_path, class: 'logo' do %>
+              <div class="circle">
+              <br />
+              You know
+              <br />
+              you need to
+              <br />
+              WH40K
+              </div>
+            <% end %>
+          <% end %>
+        </div>      
   <div class="col-4 slogan">
-        Splurting out random geek quotes from WH40K since yesterday
+        Splurting out random WH40K quotes since yesterday
       </div>
 
-      <div class="col-5">
-        <div class="col-5 links">
-        <%= link_to 'Contribute', '#' %>
-        <%= link_to 'About', '#' %>
+      <div class="col-5 links">
+        <!-- Button trigger modal -->
+        <%= link_to 'Launch demo modal', '#', data: {toggle: 'modal', target: '#myModal'} %>
+        <%= link_to 'About', about_path %>
       </div>
 
     </header>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
 
       <hr />
@@ -38,6 +70,11 @@
       <br class="clear" />
 
       <div class="container">
+        <% if flash[:error].present? %>
+          <div class="col-10 offset-1 alert alert-danger">
+            <%= flash[:error].html_safe %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
 
@@ -45,7 +82,7 @@
         <div class="container">
           <div class="row">
             <div class="col-6">
-              <%= link_to "This isn't enough, I need more", "#", class: 'next-quote' %>
+              <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
             </div>
               <div class="col-6 footer-blurb">
               Proudly hacked in Toronto, ON by a <a target="_blank" href="https://github.com/GregM1906">Greg</a><br />

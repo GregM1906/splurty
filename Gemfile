@@ -3,6 +3,8 @@ gem 'nokogiri'
 gem 'rack', '~> 2.0.1'
 gem 'rspec'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'simple_form'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
